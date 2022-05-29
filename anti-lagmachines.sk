@@ -1,0 +1,15 @@
+on right click:
+ set {_helditem} to players tool
+ if {_helditem} is piston:
+  set {amountofblocks.%player%} to {amountofblocks.%player%} + 1
+ if {_helditem} is sticky piston:
+  set {amountofblocks.%player%} to {amountofblocks.%player%} + 1
+ if {_helditem} is observer:
+  set {amountofblocks.%player%} to {amountofblocks.%player%} + 1
+ if {amountofblocks.%player%} is greater than 30:
+  cancel event
+  message "&cSorry, You can't place more than 30 of these per minute!"
+  
+every 60 seconds:
+ set {amountofblocks.%player%} to 0
+ broadcast "<green>Reset maximum redstone place count!"
